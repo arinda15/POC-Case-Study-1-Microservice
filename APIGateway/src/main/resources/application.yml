@@ -1,0 +1,23 @@
+server:
+  port: 8000
+          com:    ibm:      routes: 
+       - id: loginMicroservice              
+        uri: http://localhost:8002/        
+        predicates:
+        - Path=/ecommerce/login/**          
+        
+       
+      - id: orderMicroservice
+        uri: http://localhost:8001/
+        predicates:
+        - Path=/ecommerceV2/**
+
+        
+      - id: orderMicroservice
+        uri: http://localhost:8001/
+        predicates:
+        - Path=/ecommerce/** 
+        filters:
+        - RewritePath=/ecommerce, /ecommerceV2/
+        
+        
